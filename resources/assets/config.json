@@ -8,9 +8,9 @@
       "./scripts/customizer.js"
     ]
   },
-  "publicPath": "/app/themes/sage",
-  "devUrl": "http://example.dev",
-  "proxyUrl": "http://localhost:3000",
+  "publicPath": "/app/themes/couvrefeu",
+  "devUrl": "http://localhost/couvre-feu",
+  "proxyUrl": "http://localhost:3000/couvre-feu",
   "cacheBusting": "[name]_[hash:8]",
   "watch": [
     "{app,resources/views}/**/*.php"

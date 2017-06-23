@@ -1,6 +1,8 @@
 /** import external dependencies */
 import 'jquery';
 import 'bootstrap';
+import 'scrollmagic/scrollmagic/minified/ScrollMagic.min';
+import 'slick-carousel/slick/slick.min';
 
 /** import local dependencies */
 import Router from './util/Router';

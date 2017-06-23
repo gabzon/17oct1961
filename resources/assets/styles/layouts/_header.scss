@@ -4,3 +4,21 @@
 .banner .nav a {
   @extend .nav-link;
 }
+
+.text-header{
+    position:fixed;
+    color:black;
+    font-size:30px;
+    transform:rotate(90deg);
+    left: -30px;
+    top: 60px;
+}
+
+input#my-search{
+    border:0px;
+    border-bottom: 1px solid black;
+    background: transparent;
+}
+input#my-search::placeholder{
+    color:black;
+}
