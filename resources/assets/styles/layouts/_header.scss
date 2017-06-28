@@ -8,17 +8,17 @@
 .text-header{
     position:fixed;
     color:black;
-    font-size:30px;
+    font-size:28px;
     transform:rotate(90deg);
-    left: -30px;
+    left: -50px;
     top: 60px;
 }
 
-input#my-search{
+input#search-input{
     border:0px;
     border-bottom: 1px solid black;
     background: transparent;
 }
-input#my-search::placeholder{
+input#search-input::placeholder{
     color:black;
 }
