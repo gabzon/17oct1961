@@ -46,7 +46,7 @@ Template Name: Homepage
                 @else
                     <li class="p-1" data-label="{{ $search_tags }}" style="{{ display_styles(get_the_ID()) }}">
                         @php(the_content())
-                        <h1>{{  get_the_title() }}</h1>
+                        <h1>{{ get_the_title() }}</h1>
                         <h6>{{ get_post_meta(get_the_ID(),'article_year', true )}}</h6>
                     </li>
                 @endif
