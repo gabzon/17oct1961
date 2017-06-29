@@ -61,11 +61,9 @@ function display_styles($id){
         $bg_color = 'background-color: ' . get_post_meta($id,'cf_colorpicker', true) . ';';
     }
     if (get_post_meta($id,'cf_upload_media', true)) {
-        $bg = 'background-image: url("' . get_post_meta($id,'cf_upload_media', true) . '")';
+        $bg_img = 'background-image: url("' . wp_get_attachment_url( get_post_meta($id,'cf_upload_media', true) ) . '");';
     }
 
-
-    //$style = $ff. $width . $height . $mt . $mr . $mb . $ml . $pt . $pr . $pb . $pl . $bg_color . $bg_img;
     $style = $ff. $width . $height . $mt . $mr . $mb . $ml . $pt . $pr . $pb . $pl . $bg_color . $bg_img;
     return $style;
 }
