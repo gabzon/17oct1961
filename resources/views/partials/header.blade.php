@@ -1,7 +1,7 @@
 <span id="website-title">
-    <a class="text-header couvrefeu-text" href="{{ home_url('/') }}" style="position:fixed; top: 100px; left:-45px; ">{{ get_bloginfo('name', 'display') }}</a>
+    <a class="text-header couvrefeu-text" href="{{ home_url('/') }}" style="position:fixed; top: 100px; left:-72px;">{{ get_bloginfo('name', 'display') }}</a>
 </span>
-<header class="banner navbar fixed-top navbar-toggleable-md bg-faded" style="background:transparent;">
+<header class="banner navbar fixed-top navbar-toggleable-md bg-faded" style="background:transparent; z-index:2;">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>

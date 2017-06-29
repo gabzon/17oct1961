@@ -30,7 +30,7 @@ Template Name: Homepage
 
                     @if ($year_block_state === 'start')
                         <div class="year-block mt-3">
-                            <div class="text-right sticky-top pt-5">
+                            <div class="text-right sticky-top pt-5" style="z-index:1;">
                                 <h5 class="couvrefeu-text" style="position:absolute; right:5px; top:20px; width: 30px;">{{ $year }}</h5>
                             </div>
                             @include('partials.article')
@@ -38,7 +38,7 @@ Template Name: Homepage
                     @else
                         </div>
                         <div class="year-block mt-3">
-                            <div class="text-right sticky-top pt-5">
+                            <div class="text-right sticky-top pt-5" style="z-index:1;">
                                 <h5 class="couvrefeu-text" style="position:absolute; right:5px; top:20px; width: 30px;">{{ $year }}</h5>
                             </div>
                         @include('partials.article')

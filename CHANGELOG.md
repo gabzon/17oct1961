@@ -11,5 +11,6 @@
 * style.css & index.php added for github updater
 * header and footer text aligned
 * Side dates aligned
+* Scroll down search field lock debugged
 
 * Diaporama
