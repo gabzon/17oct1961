@@ -8,6 +8,6 @@
 * Content text searchable when quote option selected
 * Header and footer fixed links hover styles removed
 * Blocks of year debugged
-
+* style.css & index.php added for github updater
 
 * Diaporama
