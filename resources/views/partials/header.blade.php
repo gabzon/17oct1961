@@ -12,8 +12,8 @@
             @endif
         </nav>
         <form class="form-inline my-2 my-lg-0 mx-auto">
-            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-            <input id="search-input" name="keyword" type="text" placeholder="rechercher" onfocus="this.value = '';">
+            → &nbsp;
+            <input id="search-input" name="keyword" type="text" placeholder="rechercher" onfocus="this.value = '';" style="outline: none; font-family:'SuisseIntl';">
         </form>
     </div>
 </header>

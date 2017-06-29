@@ -23,7 +23,6 @@ Template Name: Homepage
         <div class="mt-5 articles">
             @while ($query->have_posts())
                 @php( $query->the_post() )
-                @php( $search_tags = strtolower(get_the_title()) . strtolower(display_the_tags($p->ID)) )
                 @php( $year = get_post_meta(get_the_ID(),'article_year', true ) )
                 @if ($current_year != $year)
                     <div class="text-right sticky-top">
@@ -31,25 +30,7 @@ Template Name: Homepage
                     </div>
                     @php( $current_year = $year)
                 @endif
-                @if (get_post_format( $p->ID ) === 'image')
-                    <div class="pt-1" data-label="{{ $search_tags }}" style="{{ display_styles(get_the_ID()) }} display:inline-block; overflow:scroll">
-                        <a data-toggle="modal" data-target=".image-zoom">
-                            @php(the_content())
-                        </a>
-                        <!-- Modal -->
-                        <div class="modal fade image-zoom" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg" role="document">
-                                <div class="modal-content text-center">
-                                    @php(the_content())
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @else
-                    <div class="p-1" data-label="{{ $search_tags }}" style="{{ display_styles(get_the_ID()) }} display:inline-block; overflow:scroll">                        
-                        @php( the_content() )
-                    </div>
-                @endif
+                @include('partials.article')
             @endwhile
         </div>
         @php(wp_reset_postdata())
@@ -65,19 +46,19 @@ Template Name: Homepage
             var input = $(this).val();
             // check wheather the matching element exists
             // by default every list element will be shown
-            $(".articles div").show();
+            $(".articles div.cf-article").show();
             // Non related element will be hidden after input
-            $(".articles div").not("[data-label*="+ input.toLowerCase() +"]").hide();
+            $(".articles div.cf-article").not("[data-label*="+ input.toLowerCase() +"]").hide();
 
             // For Search Variable, total number of lists and number of matched elements
-            var total = $(".articles div").length;
-            var matched = $(".articles div[data-label*="+ input +"]").length;
+            var total = $(".articles div.cf-article").length;
+            var matched = $(".articles div.cf-article[data-label*="+ input +"]").length;
             if(input.length > 0){
                 $('.input').show();
                 $('.input').html('Searched for "' + input + '" (' + matched + ' Matched out of ' + total + ' )');
             } else {
                 $('.input').hide();
-                $(".articles div").show();
+                $(".articles div.cf-article").show();
             }
         });
     });

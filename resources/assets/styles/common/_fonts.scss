@@ -33,3 +33,15 @@
 	font-weight: normal;
 	font-style: normal;
 }
+
+@font-face {
+	font-family: 'SuisseIntl-Mono';
+	src: url('../fonts/SuisseIntlMono-Regular-WebXL.eot');
+	src: local('☺'),
+    url('../fonts/SuisseIntlMono-Regular-WebXL.woff') format('woff'),
+    url('../fonts/SuisseIntlMono-Regular-WebXL.woff2') format('woff2'),
+    url('../fonts/SuisseIntlMono-Regular-WebXL.ttf') format('truetype'),
+    url('../fonts/SuisseIntlMono-Regular-WebXL.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}

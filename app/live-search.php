@@ -1,6 +1,8 @@
 <?php
-
-function display_the_tags($id){
+/*
+* This function helps
+*/
+function display_search_keywords($id){
     $tags = '';
 
     $posttags = get_the_tags($id);
@@ -10,29 +12,14 @@ function display_the_tags($id){
             $tags = $tags . ' ' . $tag->name;
         }
     }
+
+    $tags = strtolower(get_the_title($id)) . strtolower($tags) . '' . get_post_meta( $id , 'article_year', true);
+
+    // if (get_post_format( $id ) === 'image') {
+    //     $tags = $tags . get_the_content($id);
+    // }
+
     return $tags;
-}
-
-function display_styles($id){
-    $width  = '';
-    $height = '';
-    $mr     = '';
-    $ml     = '';
-
-    if (get_post_meta($id,'width', true)) {
-        $width = 'width: ' . get_post_meta($id,'width', true)  . 'px;';
-    }
-    if (get_post_meta($id,'height', true)) {
-        $height = 'height: ' . get_post_meta($id,'height', true) . 'px;';
-    }
-    if (get_post_meta($id,'margin_right', true)) {
-        $mr = 'margin-right: ' . get_post_meta($id,'margin_right', true) . 'px;';
-    }
-    if (get_post_meta($id,'margin_left', true)) {
-        $ml = 'margin-left: ' . get_post_meta($id,'margin_left', true) . 'px;';
-    }
-    $style = $width . $height . $mr . $ml;
-    return $style;
 }
 
 // add the ajax fetch js
