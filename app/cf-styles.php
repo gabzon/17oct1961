@@ -9,14 +9,22 @@ function display_styles($id){
     $bg_img = '';
     $ff     = '';
 
-    if (get_post_meta($id,'cf_font_family', true)) {
-        $ff = 'font-family: ' . get_post_meta($id,'cf_font_family', true)  . '; ';
-    }
+
+    /* *************************************************************************
+    ** Width & Heigh Section
+    ************************************************************************* */
     if (get_post_meta($id,'width', true)) {
         $width = 'width: ' . get_post_meta($id,'width', true)  . '; ';
     }
     if (get_post_meta($id,'height', true)) {
         $height = 'height: ' . get_post_meta($id,'height', true)  . '; ';
+    }
+
+    /* *************************************************************************
+    ** Font Section
+    ************************************************************************* */
+    if (get_post_meta($id,'cf_font_family', true)) {
+        $ff = 'font-family: ' . get_post_meta($id,'cf_font_family', true)  . '; ';
     }
 
     /* *************************************************************************

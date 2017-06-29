@@ -13,11 +13,11 @@ function display_search_keywords($id){
         }
     }
 
-    $tags = strtolower(get_the_title($id)) . strtolower($tags) . '' . get_post_meta( $id , 'article_year', true);
+    $tags = strtolower(get_the_title($id)) . strtolower($tags) . ' ' . get_post_meta( $id , 'article_year', true);
 
-    // if (get_post_format( $id ) === 'image') {
-    //     $tags = $tags . get_the_content($id);
-    // }
+    if (get_post_format( $id ) === 'quote') {
+        $tags = $tags . ' ' . get_post_field('post_content', $id);
+    }
 
     return $tags;
 }
