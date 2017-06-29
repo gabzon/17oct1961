@@ -16,7 +16,8 @@ Template Name: Homepage
         'order'             => 'ASC'
     ];
     $query = new WP_Query( $args );
-    //$current_year = '';
+    $current_year = '0';
+    $year_block_state = 'start';
     @endphp
 
     @if ( $query->have_posts() )
@@ -24,18 +25,40 @@ Template Name: Homepage
             @while ($query->have_posts())
                 @php( $query->the_post() )
                 @php( $year = get_post_meta(get_the_ID(),'article_year', true ) )
-                @if ($current_year != $year)
-                    <div class="text-right sticky-top">
-                        <span class="couvrefeu-text" style="position:absolute; right:5px; top:20px; background:white;">&nbsp;{{ $year }}&nbsp;&nbsp;</span>
-                    </div>
-                    @php( $current_year = $year)
+
+                {{-- <div class="m-5 p-5 bg-danger text-white">
+                    <h6>Title: {{ get_the_title() }}</h6>
+                    <h6>Year: {{ $year }}</h6>
+                    <h6>State: {{ $year_block_state }}</h6>
+                    <h6>Current Year: {{ $current_year }}</h6>
+                </div> --}}
+
+                @if ( $current_year < $year )
+
+                    @if ($year_block_state === 'start')
+                        <div class="year-block mt-3">
+                            <div class="text-right sticky-top pt-5">
+                                <span class="couvrefeu-text" style="position:absolute; right:5px; top:20px;">&nbsp;{{ $year }}&nbsp;&nbsp;</span>
+                            </div>
+                            @include('partials.article')
+                            @php( $year_block_state = 'inside' )
+                    @else
+                        </div>
+                        <div class="year-block mt-3">
+                            <div class="text-right sticky-top pt-5">
+                                <span class="couvrefeu-text" style="position:absolute; right:5px; top:20px;">&nbsp;{{ $year }}&nbsp;&nbsp;</span>
+                            </div>
+                        @include('partials.article')
+                    @endif
+                    @php( $current_year = $year )
+                @elseif ($current_year === $year)
+                    @include('partials.article')
                 @endif
-                @include('partials.article')
             @endwhile
         </div>
         @php(wp_reset_postdata())
     @else
-        // no posts found
+        // Pas d'articles trouvé
     @endif
 
     <script type="text/javascript">

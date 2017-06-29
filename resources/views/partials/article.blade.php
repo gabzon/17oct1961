@@ -3,8 +3,8 @@
 @if (get_post_format( $p->ID ) === 'image')
     <div class="pt-1 cf-article" data-label="{{ $search_tags }}" style="{{ display_styles(get_the_ID()) }} display:inline-block; overflow:scroll">
         <a data-toggle="modal" data-target=".image-zoom">
+            <h3>{{ the_title()}}</h3>
             @php(the_content())
-            {{ the_title()}}
         </a>
         <!-- Modal -->
         <div class="modal fade image-zoom" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -17,7 +17,7 @@
     </div>
 @else
     <div class="p-1 cf-article" data-label="{{ $search_tags }}" style="{{ display_styles(get_the_ID()) }} display:inline-block; overflow:scroll">
+        <h3>{{ the_title()}}</h3>
         @php( the_content() )
-        {{ the_title()}}
     </div>
 @endif
