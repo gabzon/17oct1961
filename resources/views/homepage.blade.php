@@ -3,12 +3,10 @@ Template Name: Homepage
 --}}
 
 @extends('layouts.couvrefeu')
-
 @section('content')
     @while(have_posts()) @php(the_post())
         @include('partials.content-page')
     @endwhile
-
     @php
     $args = [
         'post_type'         => 'post',
@@ -18,22 +16,26 @@ Template Name: Homepage
         'order'             => 'ASC'
     ];
     $query = new WP_Query( $args );
+    //$current_year = '';
     @endphp
 
     @if ( $query->have_posts() )
-        <ul id="articles" class="mt-5">
+        <div class="mt-5 articles">
             @while ($query->have_posts())
                 @php( $query->the_post() )
-                @php
-                $search_tags = strtolower(get_the_title()) . strtolower(display_the_tags($p->ID));
-                @endphp
+                @php( $search_tags = strtolower(get_the_title()) . strtolower(display_the_tags($p->ID)) )
+                @php( $year = get_post_meta(get_the_ID(),'article_year', true ) )
+                @if ($current_year != $year)
+                    <div class="text-right sticky-top">
+                        <span class="couvrefeu-text" style="position:absolute; right:5px; top:20px; background:white;">&nbsp;{{ $year }}&nbsp;&nbsp;</span>
+                    </div>
+                    @php( $current_year = $year)
+                @endif
                 @if (get_post_format( $p->ID ) === 'image')
-                    <li class="p-1" data-label="{{ $search_tags }}" style="{{ display_styles(get_the_ID()) }}">
+                    <div class="pt-1" data-label="{{ $search_tags }}" style="{{ display_styles(get_the_ID()) }} display:inline-block; overflow:scroll">
                         <a data-toggle="modal" data-target=".image-zoom">
                             @php(the_content())
                         </a>
-                        <h4>{{  get_the_title() }}</h4>
-                        <h6>{{ get_post_meta(get_the_ID(),'article_year', true )}}</h6>
                         <!-- Modal -->
                         <div class="modal fade image-zoom" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
@@ -42,17 +44,14 @@ Template Name: Homepage
                                 </div>
                             </div>
                         </div>
-                    </li>
+                    </div>
                 @else
-                    <li class="p-1" data-label="{{ $search_tags }}" style="{{ display_styles(get_the_ID()) }}">
-                        @php(the_content())
-                        <h1>{{ get_the_title() }}</h1>
-                        <h6>{{ get_post_meta(get_the_ID(),'article_year', true )}}</h6>
-                    </li>
+                    <div class="p-1" data-label="{{ $search_tags }}" style="{{ display_styles(get_the_ID()) }} display:inline-block; overflow:scroll">                        
+                        @php( the_content() )
+                    </div>
                 @endif
             @endwhile
-        </ul>
-
+        </div>
         @php(wp_reset_postdata())
     @else
         // no posts found
@@ -66,19 +65,19 @@ Template Name: Homepage
             var input = $(this).val();
             // check wheather the matching element exists
             // by default every list element will be shown
-            $("ul li").show();
+            $(".articles div").show();
             // Non related element will be hidden after input
-            $("ul li").not("[data-label*="+ input.toLowerCase() +"]").hide();
+            $(".articles div").not("[data-label*="+ input.toLowerCase() +"]").hide();
 
             // For Search Variable, total number of lists and number of matched elements
-            var total = $("ul li").length;
-            var matched = $("ul li[data-label*="+ input +"]").length;
+            var total = $(".articles div").length;
+            var matched = $(".articles div[data-label*="+ input +"]").length;
             if(input.length > 0){
                 $('.input').show();
                 $('.input').html('Searched for "' + input + '" (' + matched + ' Matched out of ' + total + ' )');
             } else {
                 $('.input').hide();
-                $("ul li").show();
+                $(".articles div").show();
             }
         });
     });
