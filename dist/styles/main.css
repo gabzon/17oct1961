@@ -40,6 +40,7 @@
           transform: rotate(90deg);
   color: black;
   font-size: 28px;
+  line-height: 35px;
 }
 
 /*!
@@ -14386,14 +14387,11 @@ h6 {
 }
 
 .text-header {
-  position: fixed;
   color: black;
   font-size: 28px;
   -webkit-transform: rotate(90deg);
        -o-transform: rotate(90deg);
           transform: rotate(90deg);
-  left: -50px;
-  top: 60px;
 }
 
 a.text-header:hover {

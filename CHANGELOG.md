@@ -9,5 +9,7 @@
 * Header and footer fixed links hover styles removed
 * Blocks of year debugged
 * style.css & index.php added for github updater
+* header and footer text aligned
+* Side dates aligned
 
 * Diaporama
