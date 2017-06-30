@@ -18,7 +18,9 @@ Template Name: Homepage
     $query = new WP_Query( $args );
     $current_year = '0';
     $year_block_state = 'start';
+
     @endphp
+
 
     @if ( $query->have_posts() )
         <div class="mt-5 articles">
@@ -29,8 +31,9 @@ Template Name: Homepage
                 @if ( $current_year < $year )
 
                     @if ($year_block_state === 'start')
+                        @php( $search_tags = display_search_keywords( get_the_ID() ) )
                         <div class="year-block mt-3">
-                            <div class="text-right sticky-top pt-5" style="z-index:1;">
+                            <div class="text-right sticky-top pt-5 cf-article" style="z-index:1;" data-label="{{$search_tags}}">
                                 <h5 class="couvrefeu-text" style="position:absolute; right:5px; top:20px; width: 30px;">{{ $year }}</h5>
                             </div>
                             @include('partials.article')
@@ -38,7 +41,7 @@ Template Name: Homepage
                     @else
                         </div>
                         <div class="year-block mt-3">
-                            <div class="text-right sticky-top pt-5" style="z-index:1;">
+                            <div class="text-right sticky-top pt-5 cf-article" style="z-index:1;" data-label="{{$search_tags}}">
                                 <h5 class="couvrefeu-text" style="position:absolute; right:5px; top:20px; width: 30px;">{{ $year }}</h5>
                             </div>
                         @include('partials.article')

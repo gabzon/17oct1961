@@ -12,5 +12,7 @@
 * header and footer text aligned
 * Side dates aligned
 * Scroll down search field lock debugged
+* Legend Panel on image hover added
+
 
 * Diaporama
