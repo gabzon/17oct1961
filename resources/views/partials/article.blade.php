@@ -2,8 +2,8 @@
 
 @if (get_post_format( $p->ID ) === 'image')
     <div data-title="{{ the_title() }}" class="pt-1 cf-article cf-image" data-label="{{ $search_tags }}" style="{{ display_styles(get_the_ID()) }} display:inline-block; overflow:scroll">
-        <a data-toggle="modal" data-target=".image-zoom">
-            @php(the_content())
+        @php(the_content())
+        {{-- <a data-toggle="modal" data-target=".image-zoom">
         </a>
         <!-- Modal -->
         <div class="modal fade image-zoom" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -12,7 +12,7 @@
                     @php(the_content())
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 @else
     <div class="p-1 cf-article" data-label="{{ $search_tags }}" style="{{ display_styles(get_the_ID()) }} display:inline-block; overflow:scroll">
@@ -22,6 +22,7 @@
 
 
 <script type="text/javascript">
+// http://jsfiddle.net/webdevem/4RgTS/
 jQuery(document).ready(function() {
     $('.cf-image').hover(
     function(){

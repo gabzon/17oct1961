@@ -27,12 +27,16 @@ Template Name: Homepage
             @while ($query->have_posts())
                 @php( $query->the_post() )
                 @php( $year = get_post_meta(get_the_ID(),'article_year', true ) )
-
+                @if ($year === date('Y'))
+                    @php( $current_year_color = 'text-white bg-warning' )
+                @else
+                    @php( $current_year_color = '' )
+                @endif
                 @if ( $current_year < $year )
 
                     @if ($year_block_state === 'start')
                         @php( $search_tags = display_search_keywords( get_the_ID() ) )
-                        <div class="year-block mt-3">
+                        <div class="year-block mt-3 {{ $current_year_color }}">
                             <div class="text-right sticky-top pt-5 cf-article" style="z-index:1;" data-label="{{$search_tags}}">
                                 <h5 class="couvrefeu-text" style="position:absolute; right:5px; top:20px; width: 30px;">{{ $year }}</h5>
                             </div>
@@ -40,7 +44,7 @@ Template Name: Homepage
                             @php( $year_block_state = 'inside' )
                     @else
                         </div>
-                        <div class="year-block mt-3">
+                        <div class="year-block mt-3 {{ $current_year_color }}">
                             <div class="text-right sticky-top pt-5 cf-article" style="z-index:1;" data-label="{{$search_tags}}">
                                 <h5 class="couvrefeu-text" style="position:absolute; right:5px; top:20px; width: 30px;">{{ $year }}</h5>
                             </div>

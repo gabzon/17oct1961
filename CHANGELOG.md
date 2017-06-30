@@ -13,6 +13,7 @@
 * Side dates aligned
 * Scroll down search field lock debugged
 * Legend Panel on image hover added
-
+* Background color and font color change when current year added
+* Footer text change color to white when current year is active added
 
 * Diaporama

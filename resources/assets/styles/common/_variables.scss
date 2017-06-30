@@ -1,5 +1,6 @@
 // Colors
 $brand-primary:         #27ae60;
+$brand-warning:         #00594E;
 
 $fa-font-path:          '~font-awesome/fonts';
 
@@ -11,8 +12,7 @@ $slick-font-path: "~slick-carousel/slick/fonts/";
 $slick-loader-path: "~slick-carousel/slick/";
 
 .couvrefeu-text{
-    transform:rotate(90deg);
-    color:black;
+    transform:rotate(90deg);    
     font-size: 28px;
     line-height: 35px;
 }
